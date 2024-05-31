@@ -1,11 +1,11 @@
-# Sass-Qoute-Website
+# Sass-Quote-Website
 
 ## Over-view
-Qoutes SnapShots is a web application for sharing and exploring inspiring quotes along with beautiful images.
+Quotes SnapShots is a web application for sharing and exploring inspiring Quotes along with beautiful images.
 
 ## Features
-Share your favorite quotes with stunning background images.
-Browse through a collection of curated quotes and images.
+Share your favorite Quotes with stunning background images.
+Browse through a collection of curated Quotes and images.
 Simple and intuitive user interface.
 ## How to Run
 Clone this repository to your local machine:
