@@ -172,3 +172,109 @@ nav li a:hover {
 .card.card-content a {
   color: black;
 }
+
+// Contact Section Styles
+.contact-section {
+  background-color: $bg-color;
+  padding: 80px 20px;
+  color: white;
+  
+  .contact-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    
+    h2 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: rgb(201, 143, 255);
+    }
+    
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+      color: $card-color;
+    }
+  }
+  
+  .contact-form {
+    background-color: rgba(155, 11, 250, 0.1);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(155, 11, 250, 0.2);
+    
+    .form-group {
+      margin-bottom: 25px;
+      text-align: left;
+      
+      label {
+        display: block;
+        margin-bottom: 8px;
+        color: rgb(201, 143, 255);
+        font-size: 1.1rem;
+      }
+      
+      input,
+      textarea {
+        width: 100%;
+        padding: 12px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgb(155, 11, 250);
+        border-radius: 5px;
+        color: white;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        
+        &:focus {
+          outline: none;
+          border-color: rgb(201, 143, 255);
+          box-shadow: 0 0 10px rgba(201, 143, 255, 0.3);
+        }
+        
+        &::placeholder {
+          color: rgba(255, 255, 255, 0.5);
+        }
+      }
+      
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+    }
+    
+    .submit-btn {
+      background-color: rgb(155, 11, 250);
+      color: white;
+      border: none;
+      padding: 15px 40px;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background-color: rgb(201, 143, 255);
+        transform: translateY(-2px);
+      }
+      
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+// Responsive styles for contact section
+@media screen and (max-width: 768px) {
+  .contact-section {
+    .contact-container {
+      h2 {
+        font-size: 2.5rem;
+      }
+    }
+    
+    .contact-form {
+      padding: 20px;
+    }
+  }
+}
