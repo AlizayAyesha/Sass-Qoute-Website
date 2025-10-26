@@ -4,96 +4,375 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css"/>
-    <title>Qoutes SnapShots</title>
+    <title>Quotes Snapshots - Share Your Inspiration</title>
 </head>
 <body>
-   <nav>
+   <nav class="navbar">
     <div class="logo-container">
         <h1 class="logo">Quotes</h1>
     </div>
-    <ul>
-        <li><a href="">HOME</a></li>
-        <li><a href="">ABOUT</a></li>
-        <li><a href="">GALLERY</a></li>
-        <li><a href="">CONTACT</a></li>
+    <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <ul class="nav-menu">
+        <li><a href="#home">HOME</a></li>
+        <li><a href="#gallery">GALLERY</a></li>
+        <li><a href="#quotes">QUOTES</a></li>
+        <li><a href="#submitted-quotes">COMMUNITY</a></li>
+        <li><a href="#contact">CONTACT</a></li>
     </ul>
    </nav>
-<!--header/Hero-->
-<main>
+
+   <!-- Hero Section -->
+   <main id="home">
+    <div class="hero-overlay"></div>
     <section class="content-container">
-        <h1>
-           Quotes
-        </h1>
-        <p class="info">
-           Share your Quotes!!!
-        </p>
-        <button class="cta">learn more</button>
+        <h1 class="hero-title">Quotes</h1>
+        <p class="hero-subtitle">Share your Quotes!!!</p>
+        <button class="cta">Learn More</button>
     </section>
-</main>
-<center>
-<section class="second-sec">
-  <section class="card">
-      <div class="card-content">
-          <h1 style="color: rgb(201, 143, 255);">"Hell is empty, and all the devils are here."</h1>
-      <a href="#"> MORE </a>
-      <img src="https://img.freepik.com/premium-photo/purple-punk-cyber-human-skull-with-weapon-neural-network-ai-generated_76080-20063.jpg" alt="spooky" class=" first-image">
-      </div>
-  </section>
-  <section class="card">
-      <div class="card-content">
-          <h1 style="color: rgb(201, 143, 255);">"Light the spark within you, and let it ignite the flames of your potential." </h1>
-      
-      <a href="#"> MORE </a>
-      <img src="https://st5.depositphotos.com/1026649/63661/i/450/depositphotos_636612106-stock-photo-fantasy-forest-night-glowing-flowers.jpg" alt="forest" class="second-image">
-      </div>
-  </section>
-  <section class="qoute">
-    <h1 class="last">CHECK OUT SOME NEW QUOTES</h1>
-    <div class="qoute-img-holder">
-      <div class="qoute-img">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfGzXxB4Kx-97L3ejO09stJiIm-twKTUEw0g&s" alt="qoute-img">
-      </div>
-      <div class="qoute-img">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsvDtpCOpTt7I9_yl6v1G_Xju5jQ-bjMeZ2g&s" alt="qoute-img">
-      </div>
-      <div class="qoute-img">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz1ga848LRN65Tg7lU6dojRZEVHX5ejMKlyg&s" alt="qoute-img">
-      </div>
+   </main>
+
+   <!-- Featured Quotes Section -->
+   <section class="featured-section" id="gallery">
+    <div class="container">
+        <h2 class="section-title">Featured Quotes</h2>
+        
+        <article class="card">
+            <div class="card-content">
+                <blockquote class="quote-text">"Hell is empty, and all the devils are here."</blockquote>
+                <p class="quote-author">- William Shakespeare</p>
+                <a href="#" class="card-link">Read More</a>
+            </div>
+            <div class="card-image">
+                <img src="https://img.freepik.com/premium-photo/purple-punk-cyber-human-skull-with-weapon-neural-network-ai-generated_76080-20063.jpg" alt="Dark artistic skull illustration" loading="lazy">
+            </div>
+        </article>
+
+        <article class="card card-reverse">
+            <div class="card-content">
+                <blockquote class="quote-text">"Light the spark within you, and let it ignite the flames of your potential."</blockquote>
+                <p class="quote-author">- Anonymous</p>
+                <a href="#" class="card-link">Read More</a>
+            </div>
+            <div class="card-image">
+                <img src="https://st5.depositphotos.com/1026649/63661/i/450/depositphotos_636612106-stock-photo-fantasy-forest-night-glowing-flowers.jpg" alt="Magical glowing forest at night" loading="lazy">
+            </div>
+        </article>
     </div>
-  </section>
-</section>
-</center>
+   </section>
 
-<section id="contact" class="contact-section">
-  <div class="contact-container">
-    <h2>Contact Us</h2>
-    <p>Have a quote to share? Get in touch with us!</p>
-    
-    <form class="contact-form">
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Your name" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="quote">Your Quote</label>
-        <textarea id="quote" name="quote" placeholder="Share your favorite quote..." required></textarea>
-      </div>
-      
-      <div class="form-group">
-        <label for="author">Quote Author</label>
-        <input type="text" id="author" name="author" placeholder="Who said this quote? (optional)">
-      </div>
-      
-      <button type="submit" class="submit-btn">Share Quote</button>
-    </form>
-  </div>
-</section>
+   <!-- Quote Gallery Section -->
+   <section class="quote-gallery" id="quotes">
+    <div class="container">
+        <h2 class="section-title">Discover More Quotes</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfGzXxB4Kx-97L3ejO09stJiIm-twKTUEw0g&s" alt="Inspirational quote about success" loading="lazy">
+                <div class="gallery-overlay">
+                    <p>View Quote</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsvDtpCOpTt7I9_yl6v1G_Xju5jQ-bjMeZ2g&s" alt="Motivational quote about dreams" loading="lazy">
+                <div class="gallery-overlay">
+                    <p>View Quote</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz1ga848LRN65Tg7lU6dojRZEVHX5ejMKlyg&s" alt="Wisdom quote about life" loading="lazy">
+                <div class="gallery-overlay">
+                    <p>View Quote</p>
+                </div>
+            </div>
+        </div>
+    </div>
+   </section>
 
+   <!-- Contact Section -->
+   <section id="contact" class="contact-section">
+    <div class="contact-container">
+        <h2>Contact Us</h2>
+        <p>Have a quote to share? Get in touch with us!</p>
+        
+        <form class="contact-form" id="quoteForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="quote">Your Quote</label>
+                <textarea id="quote" name="quote" placeholder="Share your favorite quote..." required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="author">Quote Author</label>
+                <input type="text" id="author" name="author" placeholder="Who said this quote? (optional)">
+            </div>
+            
+            <button type="submit" class="submit-btn">
+                <span class="btn-text">Share Quote</span>
+                <span class="btn-loader" style="display: none;">Sending...</span>
+            </button>
+        </form>
+    </div>
+   </section>
+
+   <!-- Submitted Quotes Section -->
+   <section class="submitted-quotes-section" id="submitted-quotes">
+    <div class="container">
+        <h2 class="section-title">Community Quotes</h2>
+        <p class="section-subtitle">Quotes shared by our amazing community</p>
+        <div id="quotesContainer" class="quotes-container">
+            <!-- Quotes will be dynamically inserted here -->
+        </div>
+    </div>
+   </section>
+
+   <!-- Success Modal -->
+   <div id="successModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-icon">✓</div>
+        <h2>Quote Submitted Successfully!</h2>
+        <p>Thank you for sharing your inspiration with us.</p>
+        <button class="modal-btn" onclick="closeModal()">Close</button>
+    </div>
+   </div>
+
+   <!-- Footer -->
+   <footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Quotes</h3>
+                <p>Inspiring minds, one quote at a time.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#quotes">Quotes</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">Facebook</a>
+                    <a href="#" aria-label="Twitter">Twitter</a>
+                    <a href="#" aria-label="Instagram">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Quotes Snapshots. All rights reserved.</p>
+        </div>
+    </div>
+   </footer>
+
+   <script>
+    // ============================================
+    // MOBILE MENU FUNCTIONALITY
+    // ============================================
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    mobileMenuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        mobileMenuToggle.classList.toggle('active');
+    });
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            mobileMenuToggle.classList.remove('active');
+        });
+    });
+
+    // ============================================
+    // SMOOTH SCROLLING
+    // ============================================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    // ============================================
+    // QUOTE SUBMISSION FUNCTIONALITY
+    // ============================================
+    const quoteForm = document.getElementById('quoteForm');
+    const successModal = document.getElementById('successModal');
+    const quotesContainer = document.getElementById('quotesContainer');
+
+    // Load quotes from localStorage
+    function loadQuotes() {
+        const quotes = JSON.parse(localStorage.getItem('submittedQuotes')) || [];
+        return quotes;
+    }
+
+    // Save quote to localStorage
+    function saveQuote(quoteData) {
+        const quotes = loadQuotes();
+        quotes.unshift(quoteData); // Add to beginning of array
+        localStorage.setItem('submittedQuotes', JSON.stringify(quotes));
+    }
+
+    // Display quotes
+    function displayQuotes() {
+        const quotes = loadQuotes();
+        quotesContainer.innerHTML = '';
+
+        if (quotes.length === 0) {
+            quotesContainer.innerHTML = `
+                <div class="no-quotes">
+                    <p>No quotes shared yet. Be the first to share your inspiration!</p>
+                </div>
+            `;
+            return;
+        }
+
+        quotes.forEach((quote, index) => {
+            const quoteCard = document.createElement('div');
+            quoteCard.className = 'community-quote-card';
+            quoteCard.innerHTML = `
+                <div class="quote-content">
+                    <blockquote>"${quote.quote}"</blockquote>
+                    <div class="quote-meta">
+                        <p class="quote-author-name">- ${quote.author || 'Anonymous'}</p>
+                        <p class="quote-submitter">Shared by ${quote.name}</p>
+                        <p class="quote-date">${new Date(quote.timestamp).toLocaleDateString('en-US', { 
+                            year: 'numeric', 
+                            month: 'long', 
+                            day: 'numeric' 
+                        })}</p>
+                    </div>
+                </div>
+                <button class="delete-quote-btn" onclick="deleteQuote(${index})" aria-label="Delete quote">×</button>
+            `;
+            quotesContainer.appendChild(quoteCard);
+        });
+    }
+
+    // Delete quote
+    function deleteQuote(index) {
+        if (confirm('Are you sure you want to delete this quote?')) {
+            const quotes = loadQuotes();
+            quotes.splice(index, 1);
+            localStorage.setItem('submittedQuotes', JSON.stringify(quotes));
+            displayQuotes();
+        }
+    }
+
+    // Make deleteQuote available globally
+    window.deleteQuote = deleteQuote;
+
+    // Handle form submission
+    quoteForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Get form values
+        const formData = {
+            name: document.getElementById('name').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            quote: document.getElementById('quote').value.trim(),
+            author: document.getElementById('author').value.trim() || 'Anonymous',
+            timestamp: new Date().toISOString()
+        };
+
+        // Show loading state
+        const btnText = document.querySelector('.btn-text');
+        const btnLoader = document.querySelector('.btn-loader');
+        const submitBtn = document.querySelector('.submit-btn');
+        
+        btnText.style.display = 'none';
+        btnLoader.style.display = 'inline';
+        submitBtn.disabled = true;
+
+        // Simulate API call with setTimeout (replace with actual API call if needed)
+        setTimeout(() => {
+            // Save quote
+            saveQuote(formData);
+
+            // Reset form
+            quoteForm.reset();
+
+            // Reset button state
+            btnText.style.display = 'inline';
+            btnLoader.style.display = 'none';
+            submitBtn.disabled = false;
+
+            // Show success modal
+            successModal.style.display = 'flex';
+
+            // Refresh quotes display
+            displayQuotes();
+
+            // Scroll to submitted quotes section
+            setTimeout(() => {
+                document.getElementById('submitted-quotes').scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            }, 1500);
+        }, 1000);
+    });
+
+    // Close modal function
+    function closeModal() {
+        successModal.style.display = 'none';
+    }
+
+    // Make closeModal available globally
+    window.closeModal = closeModal;
+
+    // Close modal when clicking outside
+    window.addEventListener('click', function(e) {
+        if (e.target === successModal) {
+            closeModal();
+        }
+    });
+
+    // Load and display quotes on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        displayQuotes();
+    });
+
+    // ============================================
+    // OPTIONAL: EMAIL INTEGRATION
+    // ============================================
+    // Uncomment and configure this section if you want to send emails via Formspree or similar service
+    /*
+    async function sendQuoteEmail(formData) {
+        try {
+            const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+            return response.ok;
+        } catch (error) {
+            console.error('Error sending email:', error);
+            return false;
+        }
+    }
+    */
+   </script>
 </body>
 </html>
