@@ -400,6 +400,41 @@ main .cta:active {
   transform: translateY(-1px);
 }
 
+/* About section styles */
+.about-section {
+  padding: 3rem 1.5rem;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: 12px;
+  margin: 2.5rem auto;
+  max-width: 1000px;
+  text-align: center;
+}
+.about-section .about-text {
+  color: rgba(255,255,255,0.9);
+  max-width: 820px;
+  margin: 0.5rem auto 1rem;
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+.owner-name {
+
+  color: #1e63ad;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 700;
+}
+.btn-readme {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(201,143,255,0.6);
+  color: rgba(201,143,255,0.95);
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease, transform 0.08s ease;
+}
+.btn-readme:hover { background: rgba(201,143,255,0.06); transform: translateY(-2px); }
+
 .footer {
   background-color: #0a0014;
   padding: 3rem 0 1.5rem;
