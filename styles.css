@@ -31,6 +31,10 @@ body {
   letter-spacing: 2px;
 }
 
+.logo-container a{
+  text-decoration: none;
+}
+
 .navbar {
   position: fixed;
   top: 0;
