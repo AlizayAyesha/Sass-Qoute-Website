@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css"/>
+    <title>All Quotes - Quotes Snapshots</title>
+</head>
+<body>
+   <nav class="navbar">
+    <div class="logo-container">
+        <a href="index.html"><h1 class="logo">Quotes</h1></a>
+    </div>
+    <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <ul class="nav-menu">
+        <li><a href="index.html#home">HOME</a></li>
+        <li><a href="index.html#gallery">GALLERY</a></li>
+        <li><a href="index.html#quotes">QUOTES</a></li>
+        <li><a href="index.html#submitted-quotes">COMMUNITY</a></li>
+        <li><a href="index.html#contact">CONTACT</a></li>
+    </ul>
+   </nav>
+
+   <!-- All Quotes Section -->
+   <section class="all-quotes-section">
+    <div class="container">
+        <h2 class="section-title">All Quotes</h2>
+        <p class="section-subtitle">Explore all our featured and community quotes</p>
+
+        <div id="allQuotesContainer" class="all-quotes-container">
+            <!-- Quotes will be dynamically inserted here -->
+        </div>
+    </div>
+   </section>
+
+   <!-- Footer -->
+   <footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Quotes</h3>
+                <p>Inspiring minds, one quote at a time.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#gallery">Gallery</a></li>
+                    <li><a href="index.html#quotes">Quotes</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">Facebook</a>
+                    <a href="#" aria-label="Twitter">Twitter</a>
+                    <a href="#" aria-label="Instagram">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Quotes Snapshots. All rights reserved.</p>
+        </div>
+    </div>
+   </footer>
+
+   <script>
+    // ============================================
+    // MOBILE MENU FUNCTIONALITY
+    // ============================================
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    mobileMenuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        mobileMenuToggle.classList.toggle('active');
+    });
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            mobileMenuToggle.classList.remove('active');
+        });
+    });
+
+    // ============================================
+    // ALL QUOTES FUNCTIONALITY
+    // ============================================
+    const allQuotesContainer = document.getElementById('allQuotesContainer');
+
+    // Featured quotes data
+    const featuredQuotes = [
+        {
+            quote: "Hell is empty, and all the devils are here.",
+            author: "William Shakespeare",
+            image: "https://img.freepik.com/premium-photo/purple-punk-cyber-human-skull-with-weapon-neural-network-ai-generated_76080-20063.jpg",
+            type: "featured"
+        },
+        {
+            quote: "Light the spark within you, and let it ignite the flames of your potential.",
+            author: "Anonymous",
+            image: "https://st5.depositphotos.com/1026649/63661/i/450/depositphotos_636612106-stock-photo-fantasy-forest-night-glowing-flowers.jpg",
+            type: "featured"
+        }
+    ];
+
+    // Gallery quotes data (placeholders)
+    const galleryQuotes = [
+        {
+            quote: "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+            author: "Winston Churchill",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfGzXxB4Kx-97L3ejO09stJiIm-twKTUEw0g&s",
+            type: "gallery"
+        },
+        {
+            quote: "The only way to do great work is to love what you do.",
+            author: "Steve Jobs",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsvDtpCOpTt7I9_yl6v1G_Xju5jQ-bjMeZ2g&s",
+            type: "gallery"
+        },
+        {
+            quote: "Life is what happens to you while you're busy making other plans.",
+            author: "John Lennon",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz1ga848LRN65Tg7lU6dojRZEVHX5ejMKlyg&s",
+            type: "gallery"
+        }
+    ];
+
+    // Load community quotes from localStorage
+    function loadCommunityQuotes() {
+        const quotes = JSON.parse(localStorage.getItem('submittedQuotes')) || [];
+        return quotes.map(quote => ({
+            ...quote,
+            type: 'community',
+            author: quote.author || 'Anonymous'
+        }));
+    }
+
+    // Load likes from localStorage
+    function loadLikes() {
+        return JSON.parse(localStorage.getItem('quoteLikes')) || {};
+    }
+
+    // Save likes to localStorage
+    function saveLikes(likes) {
+        localStorage.setItem('quoteLikes', JSON.stringify(likes));
+    }
+
+    // Toggle like for a quote
+    function toggleLike(quoteId) {
+        const likes = loadLikes();
+        likes[quoteId] = !likes[quoteId];
+        saveLikes(likes);
+        displayAllQuotes();
+    }
+
+    // Download quote
+    function downloadQuote(quote, image) {
+        if (image) {
+            // Download image
+            const link = document.createElement('a');
+            link.href = image;
+            link.download = `quote-${Date.now()}.png`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        } else {
+            // Download as text file
+            const textContent = `"${quote.quote}"\n\n- ${quote.author}`;
+            const blob = new Blob([textContent], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `quote-${Date.now()}.txt`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        }
+    }
+
+    // Display all quotes
+    function displayAllQuotes() {
+        const communityQuotes = loadCommunityQuotes();
+        const likes = loadLikes();
+        const allQuotes = [...featuredQuotes, ...galleryQuotes, ...communityQuotes];
+
+        allQuotesContainer.innerHTML = '';
+
+        if (allQuotes.length === 0) {
+            allQuotesContainer.innerHTML = `
+                <div class="no-quotes">
+                    <p>No quotes available yet.</p>
+                </div>
+            `;
+            return;
+        }
+
+        allQuotes.forEach((quote, index) => {
+            const quoteId = `quote-${index}`;
+            const isLiked = likes[quoteId] || false;
+
+            const quoteCard = document.createElement('div');
+            quoteCard.className = 'quote-card';
+
+            let imageHtml = '';
+            if (quote.image) {
+                imageHtml = `<div class="quote-image"><img src="${quote.image}" alt="Quote image" loading="lazy"></div>`;
+            }
+
+            let metaHtml = '';
+            if (quote.type === 'community') {
+                metaHtml = `
+                    <div class="quote-meta">
+                        <p class="quote-submitter">Shared by ${quote.name}</p>
+                        <p class="quote-date">${new Date(quote.timestamp).toLocaleDateString('en-US', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                        })}</p>
+                    </div>
+                `;
+            }
+
+            quoteCard.innerHTML = `
+                ${imageHtml}
+                <div class="quote-content">
+                    <blockquote>"${quote.quote}"</blockquote>
+                    <div class="quote-meta">
+                        <p class="quote-author-name">- ${quote.author}</p>
+                        ${metaHtml}
+                    </div>
+                    <div class="quote-actions">
+                        <button class="like-btn ${isLiked ? 'liked' : ''}" onclick="toggleLike('${quoteId}')" aria-label="Like quote">
+                            ${isLiked ? '❤️' : '🤍'} ${isLiked ? 'Liked' : 'Like'}
+                        </button>
+                        <button class="download-btn" onclick="downloadQuote(${JSON.stringify(quote).replace(/"/g, '"')}, '${quote.image || ''}')" aria-label="Download quote">
+                            📥 Download
+                        </button>
+                    </div>
+                </div>
+            `;
+            allQuotesContainer.appendChild(quoteCard);
+        });
+    }
+
+    // Make functions globally available
+    window.toggleLike = toggleLike;
+    window.downloadQuote = downloadQuote;
+
+    // Load and display quotes on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        displayAllQuotes();
+    });
+   </script>
+</body>
+</html>

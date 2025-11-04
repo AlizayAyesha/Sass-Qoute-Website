@@ -1,4 +1,4 @@
-* {
+to com* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -355,7 +355,8 @@ main .cta:active {
   font-weight: 600;
 }
 .contact-section .contact-form .form-group input,
-.contact-section .contact-form .form-group textarea {
+.contact-section .contact-form .form-group textarea,
+.contact-section .contact-form .form-group input[type="file"] {
   width: 100%;
   padding: 0.9rem;
   background-color: rgba(255, 255, 255, 0.05);
@@ -367,7 +368,8 @@ main .cta:active {
   transition: all 0.3s ease;
 }
 .contact-section .contact-form .form-group input:focus,
-.contact-section .contact-form .form-group textarea:focus {
+.contact-section .contact-form .form-group textarea:focus,
+.contact-section .contact-form .form-group input[type="file"]:focus {
   outline: none;
   border-color: rgb(201, 143, 255);
   box-shadow: 0 0 15px rgba(201, 143, 255, 0.4);
@@ -376,6 +378,24 @@ main .cta:active {
 .contact-section .contact-form .form-group input::placeholder,
 .contact-section .contact-form .form-group textarea::placeholder {
   color: rgba(255, 255, 255, 0.4);
+}
+.contact-section .contact-form .image-preview {
+  margin-top: 1rem;
+  text-align: center;
+}
+.contact-section .contact-form .remove-image-btn {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(255, 0, 0, 0.7);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+.contact-section .contact-form .remove-image-btn:hover {
+  background-color: rgb(255, 0, 0);
 }
 .contact-section .contact-form .form-group textarea {
   min-height: 120px;
@@ -401,6 +421,113 @@ main .cta:active {
   box-shadow: 0 6px 20px rgba(155, 11, 250, 0.6);
 }
 .contact-section .contact-form .submit-btn:active {
+  transform: translateY(-1px);
+}
+
+/* Quote Submission Page Styles */
+.quote-submission-section {
+  padding: 5rem 0;
+  background: linear-gradient(180deg, #000 0%, #1a0033 100%);
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+}
+.quote-submission-section .container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.quote-submission-section .section-subtitle {
+  text-align: center;
+  color: rgb(220, 215, 223);
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+}
+.quote-submission-section .quote-form {
+  background-color: rgba(155, 11, 250, 0.1);
+  padding: 2.5rem;
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(155, 11, 250, 0.3);
+  border: 1px solid rgba(155, 11, 250, 0.3);
+}
+.quote-submission-section .quote-form .form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+.quote-submission-section .quote-form .form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: rgb(201, 143, 255);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.quote-submission-section .quote-form .form-group input,
+.quote-submission-section .quote-form .form-group textarea,
+.quote-submission-section .quote-form .form-group input[type="file"] {
+  width: 100%;
+  padding: 0.9rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(155, 11, 250, 0.5);
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  transition: all 0.3s ease;
+}
+.quote-submission-section .quote-form .form-group input:focus,
+.quote-submission-section .quote-form .form-group textarea:focus,
+.quote-submission-section .quote-form .form-group input[type="file"]:focus {
+  outline: none;
+  border-color: rgb(201, 143, 255);
+  box-shadow: 0 0 15px rgba(201, 143, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+.quote-submission-section .quote-form .form-group input::placeholder,
+.quote-submission-section .quote-form .form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+.quote-submission-section .quote-form .image-preview {
+  margin-top: 1rem;
+  text-align: center;
+}
+.quote-submission-section .quote-form .remove-image-btn {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(255, 0, 0, 0.7);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+.quote-submission-section .quote-form .remove-image-btn:hover {
+  background-color: rgb(255, 0, 0);
+}
+.quote-submission-section .quote-form .form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+.quote-submission-section .quote-form .submit-btn {
+  background-color: rgb(155, 11, 250);
+  color: white;
+  border: none;
+  padding: 1rem 3rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(155, 11, 250, 0.4);
+}
+.quote-submission-section .quote-form .submit-btn:hover {
+  background-color: rgb(201, 143, 255);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(155, 11, 250, 0.6);
+}
+.quote-submission-section .quote-form .submit-btn:active {
   transform: translateY(-1px);
 }
 
@@ -512,6 +639,10 @@ main .cta:active {
   font-size: 1.2rem;
   margin-bottom: 3rem;
 }
+.submitted-quotes-section .form-group {
+  margin-bottom: 2rem;
+  text-align: center;
+}
 .submitted-quotes-section .quotes-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -538,6 +669,20 @@ main .cta:active {
   padding: 2rem;
   transition: all 0.3s ease;
   animation: fadeInUp 0.5s ease-out;
+  display: flex;
+  flex-direction: column;
+}
+.submitted-quotes-section .community-quote-card .quote-image {
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  overflow: hidden;
+  max-height: 300px;
+}
+.submitted-quotes-section .community-quote-card .quote-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .submitted-quotes-section .community-quote-card:hover {
   transform: translateY(-5px);
@@ -861,6 +1006,112 @@ main .cta:active {
     padding: 0.9rem 2rem;
     font-size: 1rem;
   }
+}
+
+.all-quotes-section {
+  padding: 5rem 0;
+  background: linear-gradient(180deg, #000 0%, #1a0033 100%);
+}
+.all-quotes-section .section-subtitle {
+  text-align: center;
+  color: rgb(220, 215, 223);
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+}
+.all-quotes-section .all-quotes-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.all-quotes-section .quote-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(196, 169, 200, 0.15), rgba(155, 11, 250, 0.1));
+  border: 1px solid rgba(155, 11, 250, 0.3);
+  border-radius: 15px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.5s ease-out;
+  display: flex;
+  flex-direction: column;
+}
+.all-quotes-section .quote-card .quote-image {
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  overflow: hidden;
+  max-height: 300px;
+}
+.all-quotes-section .quote-card .quote-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.all-quotes-section .quote-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(155, 11, 250, 0.4);
+  border-color: rgb(201, 143, 255);
+}
+.all-quotes-section .quote-card .quote-content blockquote {
+  font-size: 1.2rem;
+  color: white;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  position: relative;
+  padding-left: 1rem;
+  border-left: 3px solid rgb(155, 11, 250);
+}
+.all-quotes-section .quote-card .quote-content .quote-meta .quote-author-name {
+  color: rgb(201, 143, 255);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+.all-quotes-section .quote-card .quote-content .quote-meta .quote-submitter {
+  color: rgb(220, 215, 223);
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+.all-quotes-section .quote-card .quote-content .quote-meta .quote-date {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+}
+.all-quotes-section .quote-card .quote-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  justify-content: center;
+}
+.all-quotes-section .quote-card .quote-actions .like-btn,
+.all-quotes-section .quote-card .quote-actions .download-btn {
+  background-color: rgba(155, 11, 250, 0.1);
+  border: 1px solid rgba(155, 11, 250, 0.5);
+  color: rgb(201, 143, 255);
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.all-quotes-section .quote-card .quote-actions .like-btn:hover,
+.all-quotes-section .quote-card .quote-actions .download-btn:hover {
+  background-color: rgba(155, 11, 250, 0.3);
+  border-color: rgb(201, 143, 255);
+  transform: translateY(-2px);
+}
+.all-quotes-section .quote-card .quote-actions .like-btn.liked {
+  background-color: rgba(255, 0, 0, 0.2);
+  border-color: rgb(255, 0, 0);
+  color: rgb(255, 100, 100);
+}
+.all-quotes-section .quote-card .quote-actions .like-btn.liked:hover {
+  background-color: rgba(255, 0, 0, 0.3);
+  border-color: rgb(255, 100, 100);
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css"/>
+    <title>Submit Your Quote - Quotes Snapshots</title>
+</head>
+<body>
+   <nav class="navbar">
+    <div class="logo-container">
+        <a href="index.html"><h1 class="logo">Quotes</h1></a>
+    </div>
+    <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <ul class="nav-menu">
+        <li><a href="index.html#home">HOME</a></li>
+        <li><a href="index.html#gallery">GALLERY</a></li>
+        <li><a href="index.html#quotes">QUOTES</a></li>
+        <li><a href="index.html#submitted-quotes">COMMUNITY</a></li>
+        <li><a href="index.html#contact">CONTACT</a></li>
+    </ul>
+   </nav>
+
+   <!-- Quote Submission Section -->
+   <section class="quote-submission-section">
+    <div class="container">
+        <h2 class="section-title">Share Your Quote</h2>
+        <p class="section-subtitle">Submit your favorite quote and optionally include an image to inspire our community</p>
+        
+        <form class="quote-form" id="quoteForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="quote">Your Quote</label>
+                <textarea id="quote" name="quote" placeholder="Share your favorite quote..." required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="author">Quote Author</label>
+                <input type="text" id="author" name="author" placeholder="Who said this quote? (optional)">
+            </div>
+
+            <div class="form-group">
+                <label for="quoteImage">Upload Quote Image (optional)</label>
+                <input type="file" id="quoteImage" name="quoteImage" accept="image/*" onchange="previewImage(event)">
+                <div id="imagePreview" class="image-preview" style="display: none;">
+                    <img id="previewImg" src="" alt="Image preview" style="max-width: 200px; max-height: 200px; border-radius: 8px; margin-top: 10px;">
+                    <button type="button" onclick="removeImage()" class="remove-image-btn">Remove Image</button>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                <span class="btn-text">Share Quote</span>
+                <span class="btn-loader" style="display: none;">Sending...</span>
+            </button>
+        </form>
+    </div>
+   </section>
+
+   <!-- Success Modal -->
+   <div id="successModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-icon">✓</div>
+        <h2>Quote Submitted Successfully!</h2>
+        <p>Thank you for sharing your inspiration with us.</p>
+        <button class="modal-btn" onclick="closeModal()">Close</button>
+    </div>
+   </div>
+
+   <script>
+    // ============================================
+    // MOBILE MENU FUNCTIONALITY
+    // ============================================
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    mobileMenuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        mobileMenuToggle.classList.toggle('active');
+    });
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            mobileMenuToggle.classList.remove('active');
+        });
+    });
+
+    // ============================================
+    // QUOTE SUBMISSION FUNCTIONALITY
+    // ============================================
+    const quoteForm = document.getElementById('quoteForm');
+    const successModal = document.getElementById('successModal');
+
+    // Load quotes from localStorage
+    function loadQuotes() {
+        const quotes = JSON.parse(localStorage.getItem('submittedQuotes')) || [];
+        return quotes;
+    }
+
+    // Save quote to localStorage
+    function saveQuote(quoteData) {
+        const quotes = loadQuotes();
+        quotes.unshift(quoteData); // Add to beginning of array
+        localStorage.setItem('submittedQuotes', JSON.stringify(quotes));
+    }
+
+    // Image preview and handling functions
+    function previewImage(event) {
+        const file = event.target.files[0];
+        const preview = document.getElementById('imagePreview');
+        const previewImg = document.getElementById('previewImg');
+
+        if (file) {
+            // Check file size (5MB limit)
+            if (file.size > 5 * 1024 * 1024) {
+                alert('File size must be less than 5MB');
+                event.target.value = '';
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                previewImg.src = e.target.result;
+                preview.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        } else {
+            preview.style.display = 'none';
+        }
+    }
+
+    function removeImage() {
+        document.getElementById('quoteImage').value = '';
+        document.getElementById('imagePreview').style.display = 'none';
+    }
+
+    // Make functions globally available
+    window.previewImage = previewImage;
+    window.removeImage = removeImage;
+
+    // Handle form submission
+    quoteForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Get form values
+        const formData = {
+            name: document.getElementById('name').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            quote: document.getElementById('quote').value.trim(),
+            author: document.getElementById('author').value.trim() || 'Anonymous',
+            timestamp: new Date().toISOString()
+        };
+
+        // Handle image upload
+        const imageFile = document.getElementById('quoteImage').files[0];
+        if (imageFile) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                formData.image = e.target.result; // Base64 encoded image
+                processFormSubmission(formData);
+            };
+            reader.readAsDataURL(imageFile);
+        } else {
+            processFormSubmission(formData);
+        }
+    });
+
+    function processFormSubmission(formData) {
+        // Show loading state
+        const btnText = document.querySelector('.btn-text');
+        const btnLoader = document.querySelector('.btn-loader');
+        const submitBtn = document.querySelector('.submit-btn');
+
+        btnText.style.display = 'none';
+        btnLoader.style.display = 'inline';
+        submitBtn.disabled = true;
+
+        // Simulate API call with setTimeout (replace with actual API call if needed)
+        setTimeout(() => {
+            // Save quote
+            saveQuote(formData);
+
+            // Reset form
+            quoteForm.reset();
+            removeImage(); // Clear image preview
+
+            // Reset button state
+            btnText.style.display = 'inline';
+            btnLoader.style.display = 'none';
+            submitBtn.disabled = false;
+
+            // Show success modal
+            successModal.style.display = 'flex';
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 1000);
+    }
+
+    // Close modal function
+    function closeModal() {
+        successModal.style.display = 'none';
+    }
+
+    // Make closeModal available globally
+    window.closeModal = closeModal;
+
+    // Close modal when clicking outside
+    window.addEventListener('click', function(e) {
+        if (e.target === successModal) {
+            closeModal();
+        }
+    });
+   </script>
+</body>
+</html>

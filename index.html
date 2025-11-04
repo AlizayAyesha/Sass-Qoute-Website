@@ -18,10 +18,10 @@
     </button>
     <ul class="nav-menu">
         <li><a href="#home">HOME</a></li>
-        <li><a href="#gallery">GALLERY</a></li>
-        <li><a href="#quotes">QUOTES</a></li>
+        <li><a href="all-quotes.html">GALLERY</a></li>
+        <li><a href="submit-quote.html">QUOTES</a></li>
         <li><a href="#submitted-quotes">COMMUNITY</a></li>
-        <li><a href="#contact">CONTACT</a></li>
+        <li><a href="#contact-info">CONTACT</a></li>
     </ul>
    </nav>
 
@@ -31,7 +31,7 @@
     <section class="content-container">
         <h1 class="hero-title">Quotes</h1>
         <p class="hero-subtitle">Share your Quotes!!!</p>
-        <a href="#contact"><button class="cta">Learn More</button></a>
+        <a href="submit-quote.html"><button class="cta">Share Your Quote</button></a>
     </section>
    </main>
 
@@ -56,7 +56,7 @@
             <div class="card-content">
                 <blockquote class="quote-text">"Hell is empty, and all the devils are here."</blockquote>
                 <p class="quote-author">- William Shakespeare</p>
-                <a href="#" class="card-link">Read More</a>
+                <a href="all-quotes.html" class="card-link">Read More</a>
             </div>
             <div class="card-image">
                 <img src="https://img.freepik.com/premium-photo/purple-punk-cyber-human-skull-with-weapon-neural-network-ai-generated_76080-20063.jpg" alt="Dark artistic skull illustration" loading="lazy">
@@ -67,7 +67,7 @@
             <div class="card-content">
                 <blockquote class="quote-text">"Light the spark within you, and let it ignite the flames of your potential."</blockquote>
                 <p class="quote-author">- Anonymous</p>
-                <a href="#" class="card-link">Read More</a>
+                <a href="all-quotes.html" class="card-link">Read More</a>
             </div>
             <div class="card-image">
                 <img src="https://st5.depositphotos.com/1026649/63661/i/450/depositphotos_636612106-stock-photo-fantasy-forest-night-glowing-flowers.jpg" alt="Magical glowing forest at night" loading="lazy">
@@ -83,58 +83,36 @@
         <div class="gallery-grid">
             <div class="gallery-item">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfGzXxB4Kx-97L3ejO09stJiIm-twKTUEw0g&s" alt="Inspirational quote about success" loading="lazy">
-                <div class="gallery-overlay">
+                <a href="all-quotes.html" class="gallery-overlay">
                     <p>View Quote</p>
-                </div>
+                </a>
             </div>
             <div class="gallery-item">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsvDtpCOpTt7I9_yl6v1G_Xju5jQ-bjMeZ2g&s" alt="Motivational quote about dreams" loading="lazy">
-                <div class="gallery-overlay">
+                <a href="all-quotes.html" class="gallery-overlay">
                     <p>View Quote</p>
-                </div>
+                </a>
             </div>
             <div class="gallery-item">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz1ga848LRN65Tg7lU6dojRZEVHX5ejMKlyg&s" alt="Wisdom quote about life" loading="lazy">
-                <div class="gallery-overlay">
+                <a href="all-quotes.html" class="gallery-overlay">
                     <p>View Quote</p>
-                </div>
+                </a>
             </div>
         </div>
     </div>
    </section>
 
+
+
    <!-- Contact Section -->
-   <section id="contact" class="contact-section">
+   <section id="contact-info" class="contact-section">
     <div class="contact-container">
-        <h2>Contact Us</h2>
-        <p>Have a quote to share? Get in touch with us!</p>
-        
-        <form class="contact-form" id="quoteForm">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Your name" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="quote">Your Quote</label>
-                <textarea id="quote" name="quote" placeholder="Share your favorite quote..." required></textarea>
-            </div>
-            
-            <div class="form-group">
-                <label for="author">Quote Author</label>
-                <input type="text" id="author" name="author" placeholder="Who said this quote? (optional)">
-            </div>
-            
-            <button type="submit" class="submit-btn">
-                <span class="btn-text">Share Quote</span>
-                <span class="btn-loader" style="display: none;">Sending...</span>
-            </button>
-        </form>
+        <h2>Contact</h2>
+        <p>Get in touch with us!</p>
+        <div class="contact-info">
+            <p><strong>Email:</strong> <a href="mailto:alizayyosfzai@gmail.com">alizayyosfzai@gmail.com</a></p>
+        </div>
     </div>
    </section>
 
@@ -143,21 +121,14 @@
     <div class="container">
         <h2 class="section-title">Community Quotes</h2>
         <p class="section-subtitle">Quotes shared by our amazing community</p>
+
         <div id="quotesContainer" class="quotes-container">
             <!-- Quotes will be dynamically inserted here -->
         </div>
     </div>
    </section>
 
-   <!-- Success Modal -->
-   <div id="successModal" class="modal">
-    <div class="modal-content">
-        <div class="modal-icon">✓</div>
-        <h2>Quote Submitted Successfully!</h2>
-        <p>Thank you for sharing your inspiration with us.</p>
-        <button class="modal-btn" onclick="closeModal()">Close</button>
-    </div>
-   </div>
+
 
    <!-- Footer -->
    <footer class="footer">
@@ -227,8 +198,6 @@
     // ============================================
     // QUOTE SUBMISSION FUNCTIONALITY
     // ============================================
-    const quoteForm = document.getElementById('quoteForm');
-    const successModal = document.getElementById('successModal');
     const quotesContainer = document.getElementById('quotesContainer');
 
     // Load quotes from localStorage
@@ -261,16 +230,23 @@
         quotes.forEach((quote, index) => {
             const quoteCard = document.createElement('div');
             quoteCard.className = 'community-quote-card';
+
+            let imageHtml = '';
+            if (quote.image) {
+                imageHtml = `<div class="quote-image"><img src="${quote.image}" alt="Quote image" loading="lazy"></div>`;
+            }
+
             quoteCard.innerHTML = `
+                ${imageHtml}
                 <div class="quote-content">
                     <blockquote>"${quote.quote}"</blockquote>
                     <div class="quote-meta">
                         <p class="quote-author-name">- ${quote.author || 'Anonymous'}</p>
                         <p class="quote-submitter">Shared by ${quote.name}</p>
-                        <p class="quote-date">${new Date(quote.timestamp).toLocaleDateString('en-US', { 
-                            year: 'numeric', 
-                            month: 'long', 
-                            day: 'numeric' 
+                        <p class="quote-date">${new Date(quote.timestamp).toLocaleDateString('en-US', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
                         })}</p>
                     </div>
                 </div>
@@ -293,71 +269,41 @@
     // Make deleteQuote available globally
     window.deleteQuote = deleteQuote;
 
-    // Handle form submission
-    quoteForm.addEventListener('submit', function(e) {
-        e.preventDefault();
+    // Image preview and handling functions
+    function previewImage(event) {
+        const file = event.target.files[0];
+        const preview = document.getElementById('imagePreview');
+        const previewImg = document.getElementById('previewImg');
 
-        // Get form values
-        const formData = {
-            name: document.getElementById('name').value.trim(),
-            email: document.getElementById('email').value.trim(),
-            quote: document.getElementById('quote').value.trim(),
-            author: document.getElementById('author').value.trim() || 'Anonymous',
-            timestamp: new Date().toISOString()
-        };
+        if (file) {
+            // Check file size (5MB limit)
+            if (file.size > 5 * 1024 * 1024) {
+                alert('File size must be less than 5MB');
+                event.target.value = '';
+                return;
+            }
 
-        // Show loading state
-        const btnText = document.querySelector('.btn-text');
-        const btnLoader = document.querySelector('.btn-loader');
-        const submitBtn = document.querySelector('.submit-btn');
-        
-        btnText.style.display = 'none';
-        btnLoader.style.display = 'inline';
-        submitBtn.disabled = true;
-
-        // Simulate API call with setTimeout (replace with actual API call if needed)
-        setTimeout(() => {
-            // Save quote
-            saveQuote(formData);
-
-            // Reset form
-            quoteForm.reset();
-
-            // Reset button state
-            btnText.style.display = 'inline';
-            btnLoader.style.display = 'none';
-            submitBtn.disabled = false;
-
-            // Show success modal
-            successModal.style.display = 'flex';
-
-            // Refresh quotes display
-            displayQuotes();
-
-            // Scroll to submitted quotes section
-            setTimeout(() => {
-                document.getElementById('submitted-quotes').scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'start' 
-                });
-            }, 1500);
-        }, 1000);
-    });
-
-    // Close modal function
-    function closeModal() {
-        successModal.style.display = 'none';
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                previewImg.src = e.target.result;
+                preview.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        } else {
+            preview.style.display = 'none';
+        }
     }
 
-    // Make closeModal available globally
-    window.closeModal = closeModal;
+    function removeImage() {
+        document.getElementById('quoteImage').value = '';
+        document.getElementById('imagePreview').style.display = 'none';
+    }
 
-    // Close modal when clicking outside
-    window.addEventListener('click', function(e) {
-        if (e.target === successModal) {
-            closeModal();
-        }
-    });
+    // Make functions globally available
+    window.previewImage = previewImage;
+    window.removeImage = removeImage;
+
+
 
     // Load and display quotes on page load
     document.addEventListener('DOMContentLoaded', function() {
